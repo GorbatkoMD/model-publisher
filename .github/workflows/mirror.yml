@@ -1,0 +1,22 @@
+name: Mirror WoozyMasta Image
+on: workflow_dispatch
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Mirror Image
+        run: |
+          docker pull ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6-rootless
+          docker tag ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6-rootless \
+            ghcr.io/gorbatkomd/archi-model-publisher:5.7.0-1.0.6-woozy-rootless
+          docker push ghcr.io/gorbatkomd/archi-model-publisher:5.7.0-1.0.6-woozy-rootless
