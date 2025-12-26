@@ -18,5 +18,5 @@ jobs:
         run: |
           docker pull ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6-rootless
           docker tag ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6-rootless \
-            ghcr.io/gorbatkomd/archi-model-publisher:5.7.0-1.0.6-woozy-rootless
-          docker push ghcr.io/gorbatkomd/archi-model-publisher:5.7.0-1.0.6-woozy-rootless
+            ghcr.io/gorbatkomd/model-publisher:5.7.0-1.0.6-woozy-rootless
+          docker push ghcr.io/gorbatkomd/model-publisher:5.7.0-1.0.6-woozy-rootless
